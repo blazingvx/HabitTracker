@@ -12,11 +12,16 @@ Perfect starter project for open-source collaboration and feature expansion.
 
 ## 🚀 Features
 
-* Create habits
-* Mark habits as complete
-* Track completion count
-* Delete habits
-* REST API backend
+* ✨ **Modern UI** - Beautiful gradient design with smooth animations
+* 📊 **Statistics Dashboard** - View total habits, completed today, and overall completions
+* ✅ **Create & Complete Habits** - Add new habits and mark them complete daily
+* 🔥 **Streak Tracking** - Track current streaks for each habit
+* 📈 **Progress Visualization** - Visual progress bars towards 30-day goals
+* 🎯 **Smart Completion** - "Done Today" badges and streak counters
+* 🗑️ **Habit Management** - Delete habits with confirmation dialog
+* 📱 **Responsive Design** - Mobile-friendly interface
+* ⚡ **Error Handling** - Input validation and graceful error messages
+* 🔌 **REST API Backend** - Full-featured API for habit operations
 
 ---
 
@@ -24,13 +29,15 @@ Perfect starter project for open-source collaboration and feature expansion.
 
 Frontend:
 
-* React
-* Axios
+* React (JSX)
+* Modern CSS3 (Animations & Gradients)
+* Axios (HTTP Client)
+* Vite (Build tool)
 
 Backend:
 
 * Node.js
-* Express
+* Express.js
 * MongoDB
 * Mongoose
 
@@ -67,11 +74,20 @@ npm install
 npm start
 ```
 
-Frontend runs on:
-http://localhost:3000
+---
 
-Backend runs on:
-http://localhost:5000
+## 🎨 UI/UX Highlights
+
+* **Gradient Design** - Beautiful purple-to-violet gradient background with glassmorphism effects
+* **Statistics Dashboard** - At-a-glance metrics for active habits, daily completions, and total progress
+* **Habit Cards** - Clean, modern card layout with hover effects and shadow animations
+* **Progress Bars** - Visual representation of progress towards 30-day habit goals
+* **Streak Counter** - 🔥 Current streak tracking with visual indicators
+* **Smart Badges** - "Done Today" status indicators for completed habits
+* **Error Handling** - Input validation with user-friendly error messages
+* **Loading States** - Button loading indicators for all API operations
+* **Confirmation Dialog** - Prevent accidental deletion with confirmation prompts
+* **Smooth Animations** - Fade-in effects, hover states, and transition animations
 
 ---
 
@@ -86,14 +102,18 @@ DELETE /api/habits/:id
 
 ## 🗺️ Roadmap
 
+* [x] Mobile responsive UI
+* [x] Modern UI design with animations
+* [x] Daily streak tracking
+* [x] Progress visualization
 * [ ] User authentication (JWT)
-* [ ] Daily streak tracking
 * [ ] Calendar heatmap view
-* [ ] Mobile responsive UI
 * [ ] Dark mode
 * [ ] Docker support
 * [ ] Deployment guide
 * [ ] CI/CD pipeline
+* [ ] Data export (CSV/PDF)
+* [ ] Habit categories & tags
 
 ---
 
@@ -113,7 +133,7 @@ Look for issues tagged:
 
 ## 📄 License
 
-MIT License
+[MIT License](LICENSE.md)
 
 ---
 
