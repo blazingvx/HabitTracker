@@ -3,6 +3,7 @@ import axios from "axios";
 import { useTheme } from "./context/ThemeContext.jsx";
 import HabitForm from "./components/HabitForm.jsx";
 import HabitList from "./components/HabitList.jsx";
+import ExportMenu from "./components/ExportMenu.jsx";
 import "./App.css";
 
 function App() {
@@ -40,9 +41,12 @@ function App() {
           <h1>🎯 Habit Tracker</h1>
           <p>Build better habits, one day at a time</p>
         </div>
-        <button className="theme-toggle" onClick={toggleTheme} title={isDarkMode ? "Light mode" : "Dark mode"}>
-          {isDarkMode ? "☀️" : "🌙"}
-        </button>
+        <div className="header-actions">
+          <ExportMenu habits={habits} />
+          <button className="theme-toggle" onClick={toggleTheme} title={isDarkMode ? "Light mode" : "Dark mode"}>
+            {isDarkMode ? "☀️" : "🌙"}
+          </button>
+        </div>
       </div>
 
       <HabitForm fetchHabits={fetchHabits} />

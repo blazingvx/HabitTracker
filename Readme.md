@@ -20,7 +20,8 @@ Perfect starter project for open-source collaboration and feature expansion.
 * 📈 **Progress Visualization** - Visual progress bars towards 30-day goals
 * 🎯 **Smart Completion** - "Done Today" badges and streak counters
 * 🗑️ **Habit Management** - Delete habits with confirmation dialog
-* 📱 **Responsive Design** - Mobile-friendly interface
+* � **Data Export** - Export habits to CSV or PDF formats with detailed reports
+* �📱 **Responsive Design** - Mobile-friendly interface
 * ⚡ **Error Handling** - Input validation and graceful error messages
 * 🔌 **REST API Backend** - Full-featured API for habit operations
 
@@ -86,6 +87,7 @@ npm start
 * **Progress Bars** - Visual representation of progress towards 30-day habit goals
 * **Streak Counter** - 🔥 Current streak tracking with visual indicators
 * **Smart Badges** - "Done Today" status indicators for completed habits
+* **Data Export** - 📥 Export all your habits data to CSV or PDF with detailed reports
 * **Error Handling** - Input validation with user-friendly error messages
 * **Loading States** - Button loading indicators for all API operations
 * **Confirmation Dialog** - Prevent accidental deletion with confirmation prompts
@@ -109,12 +111,12 @@ DELETE /api/habits/:id
 * [x] Daily streak tracking
 * [x] Progress visualization
 * [x] Dark mode
+* [x] Data export (CSV/PDF)
 * [ ] User authentication (JWT)
 * [ ] Calendar heatmap view
 * [ ] Docker support
 * [ ] Deployment guide
 * [ ] CI/CD pipeline
-* [ ] Data export (CSV/PDF)
 * [ ] Habit categories & tags
 
 ---
