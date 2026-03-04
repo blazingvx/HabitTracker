@@ -113,7 +113,7 @@ DELETE /api/habits/:id
 * [x] Dark mode
 * [x] Data export (CSV/PDF)
 * [ ] User authentication (JWT)
-* [ ] Calendar heatmap view
+* [x] Calendar heatmap view
 * [ ] Docker support
 * [ ] Deployment guide
 * [ ] CI/CD pipeline

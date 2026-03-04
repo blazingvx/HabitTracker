@@ -1,0 +1,134 @@
+.calendar-heatmap-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.heatmap-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.heatmap-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.heatmap-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.legend-colors {
+  display: flex;
+  gap: 2px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Heatmap color scales */
+.color-empty {
+  fill: var(--bg-secondary);
+}
+
+.color-scale-1 {
+  fill: #9be9a8;
+}
+
+.color-scale-2 {
+  fill: #40c463;
+}
+
+.color-scale-3 {
+  fill: #30a14e;
+}
+
+.color-scale-4 {
+  fill: #216e39;
+}
+
+/* Override react-calendar-heatmap styles for dark mode */
+.react-calendar-heatmap text {
+  fill: var(--text-primary) !important;
+  font-size: 10px;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-month-label {
+  fill: var(--text-secondary) !important;
+  font-size: 12px;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-weekday-label {
+  fill: var(--text-secondary) !important;
+  font-size: 10px;
+}
+
+/* Tooltip styles */
+[data-tooltip-id] {
+  cursor: pointer;
+}
+
+.heatmap-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendar-heatmap-container {
+    padding: 1rem;
+  }
+
+  .heatmap-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .react-calendar-heatmap {
+    font-size: 8px;
+  }
+
+  .react-calendar-heatmap text {
+    font-size: 8px !important;
+  }
+}

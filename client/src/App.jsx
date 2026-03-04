@@ -3,6 +3,7 @@ import axios from "axios";
 import { useTheme } from "./context/ThemeContext.jsx";
 import HabitForm from "./components/HabitForm.jsx";
 import HabitList from "./components/HabitList.jsx";
+import CalendarHeatmap from "./components/CalendarHeatmap.jsx";
 import ExportMenu from "./components/ExportMenu.jsx";
 import "./App.css";
 
@@ -65,6 +66,8 @@ function App() {
           <div className="stat-label">Total Completions</div>
         </div>
       </div>
+
+      <CalendarHeatmap habits={habits} />
 
       <div className="habits-section">
         <h2 className="section-title">Your Habits</h2>
