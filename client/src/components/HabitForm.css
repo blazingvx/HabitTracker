@@ -3,25 +3,32 @@
   gap: 10px;
   margin-bottom: 30px;
   padding: 25px;
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  background: var(--accent-light);
   border-radius: 10px;
-  border: 2px solid #667eea30;
+  border: 2px solid var(--accent-lighter);
+  transition: all 0.3s ease;
 }
 
 .habit-form-input {
   flex: 1;
   padding: 12px 16px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 1em;
   font-family: inherit;
   transition: all 0.3s ease;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .habit-form-input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.habit-form-input::placeholder {
+  color: var(--text-light);
 }
 
 .habit-form-submit {

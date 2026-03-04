@@ -1,9 +1,10 @@
 .app-container {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
   padding: 40px;
   animation: slideIn 0.3s ease-in-out;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -18,14 +19,20 @@
 }
 
 .app-header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 40px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid var(--accent-color);
   padding-bottom: 20px;
 }
 
+.header-content {
+  flex: 1;
+}
+
 .app-header h1 {
-  color: #333;
+  color: var(--text-primary);
   font-size: 2.5em;
   margin-bottom: 10px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -35,8 +42,32 @@
 }
 
 .app-header p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1em;
+}
+
+.theme-toggle {
+  background: var(--accent-light);
+  border: 2px solid var(--accent-color);
+  color: var(--text-primary);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
 }
 
 .habits-section {
@@ -44,7 +75,7 @@
 }
 
 .section-title {
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.3em;
   margin-bottom: 20px;
   font-weight: 600;
@@ -53,7 +84,7 @@
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: #999;
+  color: var(--text-light);
 }
 
 .empty-state-icon {
@@ -72,25 +103,26 @@
   gap: 20px;
   margin-top: 25px;
   padding-top: 25px;
-  border-top: 2px solid #f0f0f0;
+  border-top: 2px solid var(--border-light);
 }
 
 .stat-card {
   flex: 1;
   text-align: center;
   padding: 15px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .stat-number {
   font-size: 2em;
   font-weight: bold;
-  color: #667eea;
+  color: var(--accent-color);
 }
 
 .stat-label {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9em;
   margin-top: 5px;
 }

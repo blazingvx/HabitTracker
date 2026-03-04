@@ -13,6 +13,7 @@ Perfect starter project for open-source collaboration and feature expansion.
 ## 🚀 Features
 
 * ✨ **Modern UI** - Beautiful gradient design with smooth animations
+* 🌙 **Dark Mode** - Toggle between light and dark themes with system preference detection
 * 📊 **Statistics Dashboard** - View total habits, completed today, and overall completions
 * ✅ **Create & Complete Habits** - Add new habits and mark them complete daily
 * 🔥 **Streak Tracking** - Track current streaks for each habit
@@ -79,6 +80,7 @@ npm start
 ## 🎨 UI/UX Highlights
 
 * **Gradient Design** - Beautiful purple-to-violet gradient background with glassmorphism effects
+* **Dark Mode** - 🌙 Full dark theme support with system preference detection and manual toggle
 * **Statistics Dashboard** - At-a-glance metrics for active habits, daily completions, and total progress
 * **Habit Cards** - Clean, modern card layout with hover effects and shadow animations
 * **Progress Bars** - Visual representation of progress towards 30-day habit goals
@@ -106,9 +108,9 @@ DELETE /api/habits/:id
 * [x] Modern UI design with animations
 * [x] Daily streak tracking
 * [x] Progress visualization
+* [x] Dark mode
 * [ ] User authentication (JWT)
 * [ ] Calendar heatmap view
-* [ ] Dark mode
 * [ ] Docker support
 * [ ] Deployment guide
 * [ ] CI/CD pipeline

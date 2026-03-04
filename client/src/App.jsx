@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTheme } from "./context/ThemeContext.jsx";
 import HabitForm from "./components/HabitForm.jsx";
 import HabitList from "./components/HabitList.jsx";
 import "./App.css";
@@ -7,6 +8,7 @@ import "./App.css";
 function App() {
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const fetchHabits = async () => {
     try {
@@ -34,8 +36,13 @@ function App() {
   return (
     <div className="app-container">
       <div className="app-header">
-        <h1>🎯 Habit Tracker</h1>
-        <p>Build better habits, one day at a time</p>
+        <div className="header-content">
+          <h1>🎯 Habit Tracker</h1>
+          <p>Build better habits, one day at a time</p>
+        </div>
+        <button className="theme-toggle" onClick={toggleTheme} title={isDarkMode ? "Light mode" : "Dark mode"}>
+          {isDarkMode ? "☀️" : "🌙"}
+        </button>
       </div>
 
       <HabitForm fetchHabits={fetchHabits} />

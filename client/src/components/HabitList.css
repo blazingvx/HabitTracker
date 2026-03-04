@@ -5,8 +5,8 @@
 
 .habit-item {
   padding: 20px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   transition: all 0.3s ease;
   animation: fadeIn 0.3s ease-in-out;
@@ -24,7 +24,7 @@
 }
 
 .habit-item:hover {
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   transform: translateY(-2px);
 }
 
@@ -38,7 +38,7 @@
 .habit-name {
   font-size: 1.3em;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -52,7 +52,7 @@
 .progress-bar {
   flex: 1;
   height: 8px;
-  background: #e0e0e0;
+  background: var(--border-color);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -65,7 +65,7 @@
 
 .progress-text {
   font-size: 0.9em;
-  color: #666;
+  color: var(--text-secondary);
   min-width: 60px;
   text-align: right;
 }
@@ -78,22 +78,23 @@
 }
 
 .habit-stat {
-  background: white;
+  background: var(--bg-secondary);
   padding: 12px;
   border-radius: 8px;
-  border-left: 3px solid #667eea;
+  border-left: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
 }
 
 .stat-label {
   font-size: 0.85em;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 5px;
 }
 
 .stat-value {
   font-size: 1.2em;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .habit-actions {
@@ -120,6 +121,7 @@
 .btn-complete {
   background: linear-gradient(135deg, #8DD3C7 0%, #6BA38D 100%);
   color: white;
+  border: none;
 }
 
 .btn-complete:hover:not(:disabled) {
@@ -134,6 +136,7 @@
 .btn-delete {
   background: linear-gradient(135deg, #FF6B6B 0%, #ee5a6f 100%);
   color: white;
+  border: none;
 }
 
 .btn-delete:hover:not(:disabled) {
@@ -147,7 +150,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,16 +158,17 @@
 }
 
 .confirmation-dialog {
-  background: white;
+  background: var(--bg-primary);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
   text-align: center;
   max-width: 400px;
+  animation: slideIn 0.3s ease-in-out;
 }
 
 .confirmation-dialog p {
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 20px;
   font-size: 1em;
 }
@@ -194,12 +198,13 @@
 }
 
 .confirm-no {
-  background: #e0e0e0;
-  color: #333;
+  background: var(--border-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .confirm-no:hover {
-  background: #d0d0d0;
+  background: var(--border-light);
 }
 
 .completed-today {
