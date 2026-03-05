@@ -50,8 +50,6 @@ function App() {
         </div>
       </div>
 
-      <HabitForm fetchHabits={fetchHabits} />
-
       <div className="stats">
         <div className="stat-card">
           <div className="stat-number">{totalHabits}</div>
@@ -71,6 +69,7 @@ function App() {
 
       <div className="habits-section">
         <h2 className="section-title">Your Habits</h2>
+        <HabitForm fetchHabits={fetchHabits} habits={habits} />
         {loading ? (
           <div className="empty-state">
             <p>Loading habits...</p>

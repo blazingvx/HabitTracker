@@ -117,7 +117,7 @@ DELETE /api/habits/:id
 * [ ] Docker support
 * [ ] Deployment guide
 * [ ] CI/CD pipeline
-* [ ] Habit categories & tags
+* [x] Habit categories & tags
 
 ---
 

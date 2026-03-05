@@ -11,7 +11,11 @@ router.get("/", async (req, res) => {
 
 // Create habit
 router.post("/", async (req, res) => {
-  const habit = new Habit({ name: req.body.name });
+  const habit = new Habit({ 
+    name: req.body.name,
+    category: req.body.category || "other",
+    tags: req.body.tags || []
+  });
   await habit.save();
   res.json(habit);
 });

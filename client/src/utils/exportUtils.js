@@ -5,10 +5,12 @@ export const exportToCSV = (habits) => {
     return;
   }
 
-  const headers = ["Habit Name", "Total Completions", "Current Streak", "Last Completed"];
+  const headers = ["Habit Name", "Category", "Tags", "Total Completions", "Current Streak", "Last Completed"];
   
   const rows = habits.map(habit => [
     habit.name,
+    habit.category || "other",
+    (habit.tags && habit.tags.length > 0) ? habit.tags.join(', ') : "",
     habit.completedDates?.length || 0,
     getStreak(habit),
     habit.completedDates?.length > 0 
@@ -88,6 +90,14 @@ export const exportToPDF = async (habits) => {
       doc.setFont(undefined, "bold");
       doc.text(`• ${habit.name}`, margin, yPosition);
       yPosition += 7;
+
+      // Category and tags
+      doc.setFont(undefined, "normal");
+      doc.setFontSize(8);
+      const category = habit.category || "other";
+      const tags = (habit.tags && habit.tags.length > 0) ? `Tags: ${habit.tags.join(', ')}` : "";
+      doc.text(`  Category: ${category}${tags ? ` | ${tags}` : ""}`, margin + 5, yPosition);
+      yPosition += 6;
 
       // Habit stats
       doc.setFont(undefined, "normal");

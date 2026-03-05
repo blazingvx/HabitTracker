@@ -69,10 +69,23 @@ function HabitList({ habits, fetchHabits }) {
     return Math.min((completedDates / maxDays) * 100, 100);
   };
 
+  // Group habits by category
+  const groupedHabits = habits.reduce((groups, habit) => {
+    const category = habit.category || "other";
+    if (!groups[category]) {
+      groups[category] = [];
+    }
+    groups[category].push(habit);
+    return groups;
+  }, {});
+
   return (
     <>
-      <div className="habit-list">
-        {habits.map(habit => (
+      {Object.keys(groupedHabits).map(category => (
+        <div key={category} className="habit-category">
+          <h2 className="category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+          <div className="habit-list">
+            {groupedHabits[category].map(habit => (
           <div key={habit._id} className="habit-item">
             <div className="habit-header">
               <div>
@@ -80,6 +93,13 @@ function HabitList({ habits, fetchHabits }) {
                   {habit.name}
                   {isCompletedToday(habit) && <span className="completed-today">✓ Done Today</span>}
                 </h3>
+                {habit.tags && habit.tags.length > 0 && (
+                  <div className="habit-tags">
+                    {habit.tags.map((tag, index) => (
+                      <span key={index} className="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -121,8 +141,10 @@ function HabitList({ habits, fetchHabits }) {
               </button>
             </div>
           </div>
-        ))}
-      </div>
+            ))}
+          </div>
+        </div>
+      ))}
 
       {deleteConfirm && (
         <div className="delete-confirmation">

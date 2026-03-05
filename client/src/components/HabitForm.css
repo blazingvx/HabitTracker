@@ -1,16 +1,19 @@
 .habit-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 30px;
-  padding: 25px;
+  margin-bottom: 20px;
+  padding: 20px;
   background: var(--accent-light);
   border-radius: 10px;
   border: 2px solid var(--accent-lighter);
   transition: all 0.3s ease;
+  align-items: flex-start;
 }
 
 .habit-form-input {
   flex: 1;
+  min-width: 200px;
   padding: 12px 16px;
   border: 2px solid var(--border-color);
   border-radius: 8px;
@@ -32,25 +35,33 @@
 }
 
 .habit-form-submit {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
+  padding: 20px;
+  background: var(--accent-light);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-lighter);
+  border-radius: 10px;
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  width: 100%;
 }
 
 .habit-form-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: var(--bg-primary);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.input-container {
+  position: relative;
+  flex: 1;
 }
 
 .habit-form-submit:active {
   transform: translateY(0);
+  background: var(--accent-lighter);
 }
 
 .habit-form-submit:disabled {
