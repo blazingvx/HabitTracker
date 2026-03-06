@@ -19,7 +19,8 @@ Perfect starter project for open-source collaboration and feature expansion.
 * 🔥 **Streak Tracking** - Track current streaks for each habit
 * 📈 **Progress Visualization** - Visual progress bars towards 30-day goals
 * 🎯 **Smart Completion** - "Done Today" badges and streak counters
-* 🗑️ **Habit Management** - Delete habits with confirmation dialog
+* � **Completed Habits Section** - Collapsible section for completed habits to improve visibility
+* �🗑️ **Habit Management** - Delete habits with confirmation dialog
 * � **Data Export** - Export habits to CSV or PDF formats with detailed reports
 * �📱 **Responsive Design** - Mobile-friendly interface
 * ⚡ **Error Handling** - Input validation and graceful error messages

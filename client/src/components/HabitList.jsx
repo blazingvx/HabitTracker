@@ -7,6 +7,7 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 function HabitList({ habits, fetchHabits }) {
   const [loading, setLoading] = useState({});
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [showCompleted, setShowCompleted] = useState({});
 
   const completeHabit = async (id) => {
     try {
@@ -71,82 +72,119 @@ function HabitList({ habits, fetchHabits }) {
     return Math.min((completedDates / maxDays) * 100, 100);
   };
 
-  // Group habits by category
+  // Group habits by category and completion status
   const groupedHabits = habits.reduce((groups, habit) => {
     const category = habit.category || "other";
+    const isCompleted = isCompletedToday(habit);
+    
     if (!groups[category]) {
-      groups[category] = [];
+      groups[category] = { incomplete: [], completed: [] };
     }
-    groups[category].push(habit);
+    
+    if (isCompleted) {
+      groups[category].completed.push(habit);
+    } else {
+      groups[category].incomplete.push(habit);
+    }
+    
     return groups;
   }, {});
 
+  const renderHabitItem = (habit) => (
+    <div key={habit._id} className="habit-item">
+      <div className="habit-header">
+        <div>
+          <h3 className="habit-name">
+            {habit.name}
+            {isCompletedToday(habit) && <span className="completed-today">✓ Done Today</span>}
+          </h3>
+          {habit.tags && habit.tags.length > 0 && (
+            <div className="habit-tags">
+              {habit.tags.map((tag, index) => (
+                <span key={index} className="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="habit-progress">
+        <div className="progress-bar">
+          <div 
+            className="progress-fill" 
+            style={{ width: `${calculateProgress(habit)}%` }}
+          />
+        </div>
+        <div className="progress-text">{habit.completedDates?.length || 0}x</div>
+      </div>
+
+      <div className="habit-stats">
+        <div className="habit-stat">
+          <div className="stat-label">Total Times</div>
+          <div className="stat-value">{habit.completedDates?.length || 0}</div>
+        </div>
+        <div className="habit-stat">
+          <div className="stat-label">Current Streak</div>
+          <div className="stat-value">🔥 {getStreak(habit)}</div>
+        </div>
+      </div>
+
+      <div className="habit-actions">
+        <button 
+          className={`btn btn-complete ${isCompletedToday(habit) ? 'completed' : ''}`}
+          onClick={() => completeHabit(habit._id)}
+          disabled={loading[habit._id] || isCompletedToday(habit)}
+        >
+          {isCompletedToday(habit) ? '✓ Completed' : 'Mark Complete'}
+        </button>
+        <button 
+          className="btn btn-delete"
+          onClick={() => setDeleteConfirm(habit._id)}
+          disabled={loading[habit._id]}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
-      {Object.keys(groupedHabits).map(category => (
-        <div key={category} className="habit-category">
-          <h2 className="category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-          <div className="habit-list">
-            {groupedHabits[category].map(habit => (
-          <div key={habit._id} className="habit-item">
-            <div className="habit-header">
-              <div>
-                <h3 className="habit-name">
-                  {habit.name}
-                  {isCompletedToday(habit) && <span className="completed-today">✓ Done Today</span>}
-                </h3>
-                {habit.tags && habit.tags.length > 0 && (
-                  <div className="habit-tags">
-                    {habit.tags.map((tag, index) => (
-                      <span key={index} className="tag">{tag}</span>
-                    ))}
+      {Object.keys(groupedHabits).map(category => {
+        const { incomplete, completed } = groupedHabits[category];
+        
+        return (
+          <div key={category} className="habit-category">
+            <h2 className="category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+            
+            {/* Incomplete habits */}
+            {incomplete.length > 0 && (
+              <div className="habit-list">
+                {incomplete.map(renderHabitItem)}
+              </div>
+            )}
+            
+            {/* Completed habits collapsible section */}
+            {completed.length > 0 && (
+              <div className="completed-habits-section">
+                <button 
+                  className="collapse-toggle"
+                  onClick={() => setShowCompleted(prev => ({ ...prev, [category]: !prev[category] }))}
+                >
+                  <span className="toggle-icon">{showCompleted[category] ? '▼' : '▶'}</span>
+                  Completed Today ({completed.length})
+                </button>
+                
+                {showCompleted[category] && (
+                  <div className="habit-list completed-list">
+                    {completed.map(renderHabitItem)}
                   </div>
                 )}
               </div>
-            </div>
-
-            <div className="habit-progress">
-              <div className="progress-bar">
-                <div 
-                  className="progress-fill" 
-                  style={{ width: `${calculateProgress(habit)}%` }}
-                />
-              </div>
-              <div className="progress-text">{habit.completedDates?.length || 0}x</div>
-            </div>
-
-            <div className="habit-stats">
-              <div className="habit-stat">
-                <div className="stat-label">Total Times</div>
-                <div className="stat-value">{habit.completedDates?.length || 0}</div>
-              </div>
-              <div className="habit-stat">
-                <div className="stat-label">Current Streak</div>
-                <div className="stat-value">🔥 {getStreak(habit)}</div>
-              </div>
-            </div>
-
-            <div className="habit-actions">
-              <button 
-                className={`btn btn-complete ${isCompletedToday(habit) ? 'completed' : ''}`}
-                onClick={() => completeHabit(habit._id)}
-                disabled={loading[habit._id] || isCompletedToday(habit)}
-              >
-                {isCompletedToday(habit) ? '✓ Completed' : 'Mark Complete'}
-              </button>
-              <button 
-                className="btn btn-delete"
-                onClick={() => setDeleteConfirm(habit._id)}
-                disabled={loading[habit._id]}
-              >
-                Delete
-              </button>
-            </div>
+            )}
           </div>
-            ))}
-          </div>
-        </div>
-      ))}
+        );
+      })}
 
       {deleteConfirm && (
         <div className="delete-confirmation">

@@ -246,3 +246,49 @@
   font-weight: 600;
   margin-left: 10px;
 }
+
+/* Completed habits collapsible section */
+.completed-habits-section {
+  margin-top: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.collapse-toggle {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.collapse-toggle:hover {
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.completed-list {
+  margin-top: 15px;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.completed-list .habit-item {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(69, 160, 73, 0.1) 100%);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
