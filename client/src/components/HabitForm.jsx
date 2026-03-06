@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./HabitForm.css";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 function HabitForm({ fetchHabits, habits }) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -29,7 +31,7 @@ function HabitForm({ fetchHabits, habits }) {
         category: category.trim() || "other",
         tags: tags ? tags.split(',').map(tag => tag.trim()).filter(tag => tag) : []
       };
-      await axios.post("http://localhost:5000/api/habits", habitData);
+      await axios.post(`${API_BASE}/api/habits`, habitData);
       setName("");
       setCategory("");
       setTags("");

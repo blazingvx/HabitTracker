@@ -115,7 +115,7 @@ DELETE /api/habits/:id
 * [ ] User authentication (JWT)
 * [x] Calendar heatmap view
 * [ ] Docker support
-* [ ] Deployment guide
+* [x] Deployment guide
 * [ ] CI/CD pipeline
 * [x] Habit categories & tags
 

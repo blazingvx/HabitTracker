@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./HabitList.css";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 function HabitList({ habits, fetchHabits }) {
   const [loading, setLoading] = useState({});
   const [deleteConfirm, setDeleteConfirm] = useState(null);
@@ -9,7 +11,7 @@ function HabitList({ habits, fetchHabits }) {
   const completeHabit = async (id) => {
     try {
       setLoading(prev => ({ ...prev, [id]: true }));
-      await axios.put(`http://localhost:5000/api/habits/${id}/complete`);
+      await axios.put(`${API_BASE}/api/habits/${id}/complete`);
       fetchHabits();
     } catch (error) {
       console.error("Error completing habit:", error);
@@ -21,7 +23,7 @@ function HabitList({ habits, fetchHabits }) {
   const deleteHabit = async (id) => {
     try {
       setLoading(prev => ({ ...prev, [id]: true }));
-      await axios.delete(`http://localhost:5000/api/habits/${id}`);
+      await axios.delete(`${API_BASE}/api/habits/${id}`);
       setDeleteConfirm(null);
       fetchHabits();
     } catch (error) {

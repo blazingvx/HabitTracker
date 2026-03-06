@@ -1,0 +1,112 @@
+## 🚀 Deployment (Experimental)
+
+This guide will help you deploy the Habit Tracker application to production. The app consists of a React frontend, a Node.js/Express backend, and a MongoDB database.
+
+### Prerequisites
+
+- MongoDB Atlas account (for cloud database)
+- Heroku account (for backend deployment)
+- Netlify account (for frontend deployment)
+- Git
+
+### 1. Prepare the Application for Production
+
+#### Backend Configuration
+
+First, update the server to use environment variables:
+
+1. Install dotenv:
+   ```bash
+   cd server
+   npm install dotenv
+   ```
+
+2. Create a `.env` file in the `server` directory:
+   ```
+   MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/habit-tracker?retryWrites=true&w=majority
+   PORT=5000
+   ```
+
+3. Update `server/server.js`:
+   ```javascript
+   import express from "express";
+   import mongoose from "mongoose";
+   import cors from "cors";
+   import dotenv from "dotenv";
+   import habitRoutes from "./routes/habits.js";
+
+   dotenv.config();
+
+   const app = express();
+   app.use(cors());
+   app.use(express.json());
+
+   mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/habit-tracker")
+     .then(() => console.log("MongoDB connected"))
+     .catch(err => console.error(err));
+
+   app.use("/api/habits", habitRoutes);
+
+   const PORT = process.env.PORT || 5000;
+   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+   ```
+
+#### Frontend Configuration
+
+Update the frontend to use environment variables for the API URL:
+
+1. In `client/src/App.jsx`, add at the top:
+   ```javascript
+   const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+   ```
+
+2. Replace all axios calls to use `API_BASE`:
+   - `axios.get("http://localhost:5000/api/habits")` → `axios.get(`${API_BASE}/api/habits`)`
+   - And similarly for POST, PUT, DELETE.
+
+3. Do the same in `client/src/components/HabitForm.jsx` and `client/src/components/HabitList.jsx`.
+
+### 2. Setup MongoDB Atlas
+
+1. Create a new cluster on [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Create a database user and whitelist your IP (or 0.0.0.0/0 for all)
+3. Get the connection string and update your `.env` file
+
+### 3. Deploy Backend to Heroku
+
+1. Create a new app on [Heroku](https://www.heroku.com)
+2. Connect your GitHub repository
+3. Set environment variables in Heroku dashboard:
+   - `MONGO_URI`: Your MongoDB Atlas connection string
+   - `PORT`: 5000 (or leave default)
+4. Enable automatic deploys or deploy manually
+5. Your backend will be available at `https://your-app-name.herokuapp.com`
+
+### 4. Deploy Frontend to Netlify
+
+1. Create a new site on [Netlify](https://www.netlify.com)
+2. Connect your GitHub repository and set build command to `npm run build`
+3. Set publish directory to `dist`
+4. Add environment variable:
+   - `VITE_API_BASE_URL`: `https://your-heroku-app.herokuapp.com`
+5. Deploy the site
+6. Your frontend will be available at `https://your-netlify-site.netlify.app`
+
+### 5. Update CORS (Optional)
+
+If you encounter CORS issues, update the backend CORS configuration:
+
+```javascript
+app.use(cors({
+  origin: 'https://your-netlify-site.netlify.app',
+  credentials: true
+}));
+```
+
+### 6. Test the Deployment
+
+- Visit your Netlify URL
+- Try creating, completing, and deleting habits
+- Check that data persists in MongoDB Atlas
+
+For more advanced deployments, consider using Docker or services like Railway/Render for unified deployment.

@@ -7,6 +7,8 @@ import CalendarHeatmap from "./components/CalendarHeatmap.jsx";
 import ExportMenu from "./components/ExportMenu.jsx";
 import "./App.css";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 function App() {
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ function App() {
   const fetchHabits = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/habits");
+      const res = await axios.get(`${API_BASE}/api/habits`);
       setHabits(res.data);
     } catch (error) {
       console.error("Error fetching habits:", error);
