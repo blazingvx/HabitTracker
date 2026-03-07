@@ -5,6 +5,7 @@ import HabitForm from "./components/HabitForm.jsx";
 import HabitList from "./components/HabitList.jsx";
 import CalendarHeatmap from "./components/CalendarHeatmap.jsx";
 import ExportMenu from "./components/ExportMenu.jsx";
+import NotificationBanner from "./components/NotificationBanner.jsx";
 import "./App.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
@@ -66,6 +67,12 @@ function App() {
           <div className="stat-label">Total Completions</div>
         </div>
       </div>
+
+      <NotificationBanner 
+        habits={habits}
+        completedToday={completedToday}
+        totalHabits={totalHabits}
+      />
 
       <CalendarHeatmap habits={habits} />
 

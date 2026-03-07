@@ -19,6 +19,7 @@ Perfect starter project for open-source collaboration and feature expansion.
 * 🔥 **Streak Tracking** - Track current streaks for each habit
 * 📈 **Progress Visualization** - Visual progress bars towards 30-day goals
 * 🎯 **Smart Completion** - "Done Today" badges and streak counters
+* 📋 **Daily Task Notifications** - Expandable notification banner showing remaining habits for today
 * � **Completed Habits Section** - Collapsible section for completed habits to improve visibility
 * �🗑️ **Habit Management** - Delete habits with confirmation dialog
 * � **Data Export** - Export habits to CSV or PDF formats with detailed reports
@@ -84,6 +85,7 @@ npm start
 * **Gradient Design** - Beautiful purple-to-violet gradient background with glassmorphism effects
 * **Dark Mode** - 🌙 Full dark theme support with system preference detection and manual toggle
 * **Statistics Dashboard** - At-a-glance metrics for active habits, daily completions, and total progress
+* **Daily Task Notifications** - Expandable notification banner reminding you of remaining habits for today
 * **Habit Cards** - Clean, modern card layout with hover effects and shadow animations
 * **Progress Bars** - Visual representation of progress towards 30-day habit goals
 * **Streak Counter** - 🔥 Current streak tracking with visual indicators
