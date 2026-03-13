@@ -1,4 +1,4 @@
-# 🌱 Open Source Habit Tracker
+# 🌱 Open Source Habit Tracker 
 
 A minimal full-stack Habit Tracker built with:
 
